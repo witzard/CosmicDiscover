@@ -5,8 +5,8 @@ import { formatDate } from "@/lib/dates";
 import ApodMedia from "@/components/features/apod-media";
 import NewsCard from "@/components/features/news-card";
 
-// Rebuild the page in the background at most once an hour.
-export const revalidate = 3600;
+// Rebuild the page in the background at most every 15 minutes.
+export const revalidate = 900;
 
 export default async function HomePage() {
   const [apod, news] = await Promise.all([getApod(), getArticles(1, 3)]);

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { APOD_FIRST_DATE, apodPageUrl, getApod } from "@/lib/nasa";
+import { APOD_FIRST_DATE, getApod } from "@/lib/nasa";
 import { formatDate, isIsoDate, shiftDate, todayUtc } from "@/lib/dates";
 import ApodMedia from "@/components/features/apod-media";
 
@@ -62,16 +62,16 @@ export default async function ApodPage({ searchParams }: Props) {
           <div className="apod-text">
             <p className="meta">{formatDate(apod.date)}</p>
             <h2>{apod.title}</h2>
-            {apod.copyright && <p className="meta">Image credit: {apod.copyright.trim()}</p>}
+            {apod.credit && <p className="meta">Credit: {apod.credit}</p>}
             <p className="explanation">{apod.explanation}</p>
-            <a href={apodPageUrl(apod.date)} target="_blank" rel="noreferrer">
-              View on apod.nasa.gov →
+            <a href={apod.link} target="_blank" rel="noreferrer">
+              View on science.nasa.gov →
             </a>
           </div>
         </article>
       ) : (
         <p className="notice">
-          There&apos;s no picture for {formatDate(shownDate)} yet, or NASA&apos;s service is busy. Try another
+          There&apos;s no picture for {formatDate(shownDate)} yet, or NASA&apos;s site is busy. Try another
           date.
         </p>
       )}
