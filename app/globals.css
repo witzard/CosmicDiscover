@@ -1,0 +1,477 @@
+:root {
+  --bg: #0d0118;
+  --surface: #1b0630;
+  --surface-2: #26093f;
+  --border: rgba(200, 116, 176, 0.22);
+  --text: #f3e9f1;
+  --muted: #b9a5bd;
+  --accent: #c874b0;
+  --accent-strong: #7b337d;
+  --accent-soft: #f5d5e0;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  /* A faint starfield made of a few radial gradients — no image request needed. */
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(1px 1px at 70% 80%, rgba(255, 255, 255, 0.6), transparent 60%),
+    radial-gradient(1.5px 1.5px at 40% 70%, rgba(255, 255, 255, 0.5), transparent 60%),
+    radial-gradient(1px 1px at 85% 15%, rgba(255, 255, 255, 0.6), transparent 60%),
+    radial-gradient(1px 1px at 10% 85%, rgba(255, 255, 255, 0.5), transparent 60%),
+    radial-gradient(ellipse at 80% -10%, rgba(123, 51, 125, 0.45), transparent 55%),
+    radial-gradient(ellipse at -10% 110%, rgba(67, 13, 75, 0.6), transparent 55%);
+  background-size: 300px 300px, 400px 400px, 500px 500px, 350px 350px, 450px 450px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+h2 {
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 60ch;
+}
+
+.center .lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 0.35rem;
+}
+
+.notice {
+  padding: 1rem 1.25rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  background: rgba(27, 6, 48, 0.6);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(13, 1, 24, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 64px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface-2);
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--text);
+  background: var(--accent-strong);
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.button:hover {
+  background: var(--accent-strong);
+  text-decoration: none;
+}
+
+.button.primary {
+  background: var(--accent-strong);
+  border-color: transparent;
+}
+
+.button.primary:hover {
+  background: #430d4b;
+}
+
+.button.disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Hero */
+.hero {
+  padding: 5rem 0 3rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  max-width: 18ch;
+  color: var(--accent-soft);
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--accent);
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* Sections */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-head a {
+  white-space: nowrap;
+}
+
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-head .lead {
+  margin: 0;
+}
+
+/* Cards */
+.card {
+  position: relative;
+  background: rgba(27, 6, 48, 0.85);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.card h3 a {
+  color: var(--text);
+}
+
+.summary {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.news-card {
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.news-card .summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--surface-2);
+}
+
+/* Makes the whole card clickable through its title link. */
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* APOD */
+.apod-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+}
+
+.apod-preview .apod-media img {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;
+  object-fit: cover;
+}
+
+.apod-media {
+  background: #000;
+}
+
+.apod-full .apod-media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.apod-full .apod-media img {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.apod-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.apod-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.apod-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  color: var(--muted);
+  background: var(--surface);
+}
+
+.apod-text {
+  max-width: 75ch;
+  margin-top: 1.5rem;
+}
+
+.explanation {
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.date-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.date-form label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.date-form input {
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  color-scheme: dark;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.page-info {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 720px) {
+  .apod-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 3rem;
+  }
+
+  .pagination .button {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
